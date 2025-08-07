@@ -11,9 +11,9 @@ function render() {
 
   tareas.forEach((tarea, index) => {
     const li = document.createElement('li');
-    if (tarea.hecha) li.classList.add('hecha');
+    li.setAttribute('data-hecha', tarea.hecha);
 
-    // Botones de acción
+    // Botones
     const botones = document.createElement('div');
     botones.classList.add('botones');
 
@@ -38,7 +38,7 @@ function render() {
     botones.appendChild(btnHecho);
     botones.appendChild(btnEliminar);
 
-    // Contenido textual
+    // Contenido
     const titulo = document.createElement('h3');
     titulo.textContent = tarea.titulo;
 
@@ -62,6 +62,7 @@ function render() {
     lista.appendChild(li);
   });
 }
+
 
 boton.addEventListener('click', () => {
   const titulo = tituloInput.value.trim();

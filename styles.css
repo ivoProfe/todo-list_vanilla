@@ -53,10 +53,19 @@ li {
   gap: 0.3rem;
 }
 
-li.hecha {
+/* Antes tenía .hecha – ahora usamos data-atributo */
+
+li[data-hecha="true"] {
   background: lightgreen;
   color: darkgreen;
+  text-decoration: line-through;
 }
+
+/* Si querés ocultar elementos según condición */
+li[data-hecha="true"]:has(details[open]) {
+  border-left: 4px solid green;
+}
+
 
 .botones {
   align-self: flex-end;
@@ -75,9 +84,12 @@ li.hecha {
 }
 
 .botones .hecho {
-  color: green;
+  color: white;
+  background-color: green;
+  border-radius: 10%;
 }
 
 .botones .eliminar {
-  color: red;
+  background-color: red;
+  border-radius: 10%;
 }
