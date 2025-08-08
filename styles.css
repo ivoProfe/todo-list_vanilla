@@ -1,12 +1,16 @@
 :root {
   --bg: #f9fafb;
-  --text: #111827;
+  --text1: #111827;
+  --text2: #f3f4f6;
+  --secondary: #555;
   --card-done: #86efac;
 }
 
 body.dark {
   --bg: #1f2937;
-  --text: #f3f4f6;
+  --text1: #f3f4f6;
+  --secondary: #cfbcbc;
+  --text2: #111827;
 }
 
 /*  FIXME: dark mode  */
@@ -21,27 +25,41 @@ body.dark {
 
 body {
   background-color: var(--bg);
-  color: var(--text);
+  color: var(--text1);
   transition: background 0.3s, color 0.3s;
 }
 
 main {
-  background: white;
+  background-color: var(--bg);
   margin: 1rem;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  border: var(--text1) 2px solid;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #555;
+  background-color: var(--secondary);
   padding: 1rem;
+  color: var(--text2);
+}
+
+.themeBtn{
+  padding: .25rem;
+  content: "moon";
+  background-color: darkcyan;
+}
+
+.themeBtn.dark{
+  padding: .25rem;
+  content: "sun";
+  background-color: darkblue;
 }
 
 .entrada {

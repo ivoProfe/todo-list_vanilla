@@ -139,8 +139,9 @@ function activarEdicion(index) {
   `;
 }
 
-toggleTema.addEventListener("click", () => {
+toggleTema.addEventListener("click", (t) => {
   document.body.classList.toggle("dark");
+  toggleTema.classList.toggle("dark")
 });
 
 renderTareas();
