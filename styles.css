@@ -1,3 +1,16 @@
+:root {
+  --bg: #f9fafb;
+  --text: #111827;
+  --card-done: #86efac;
+}
+
+body.dark {
+  --bg: #1f2937;
+  --text: #f3f4f6;
+}
+
+/*  FIXME: dark mode  */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,24 +20,34 @@
 }
 
 body {
-  background-color: #f7f7f7;
-  padding: 2rem;
-  max-width: 700px;
-  margin: auto;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
 }
 
 main {
   background: white;
-  padding: 2rem;
+  margin: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #555;
+  padding: 1rem;
 }
 
 .entrada {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 2rem;
   background-color: #eee;
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -49,31 +72,59 @@ input, textarea, select {
 ul {
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
 }
 
-li {
+.tarjeta {
   padding: 1rem;
   margin-bottom: 1rem;
-  background: #ccc;
   border-radius: 5px;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 
+  border-radius: 0.5rem;
+  background-color: var(--bg);
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
+  position: relative;
+  opacity: 1;
 }
 
-li[data-hecha="true"] {
+.tarjeta.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+.tarjeta.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: scale(0.95); height: 0; margin: 0; padding: 0; }
+}
+
+.tarjeta:first-child {
+  font-size: 1.2rem;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+
+.tarjeta[data-hecha="true"] {
   background-color: lightgreen !important;
   color: darkgreen;
   text-decoration: line-through;
   order: 2;
 }
 
-li:has(details[open]) {
+.tarjeta:has(details[open]) {
   border-left: 4px solid green;
 }
 
@@ -82,7 +133,6 @@ li:has(details[open]) {
   align-self: flex-end;
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
 
   position: absolute;
 }

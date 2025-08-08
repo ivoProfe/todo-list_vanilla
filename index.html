@@ -9,9 +9,12 @@
 </head>
 
 <body>
+  <header>
+    <h1>ToDo List</h1>
+    <button id="toggle-tema">🌙</button>
+  </header>
+  
   <main>
-    <h1>Lista de tareas</h1>
-
     <form class="entrada" id="form-tarea">
       <input type="text" id="titulo" placeholder="Título de la tarea" />
       <input type="text" id="subtitulo" placeholder="Subtítulo (opcional)" />
@@ -23,10 +26,10 @@
         <option value="#ddeeff">Azul suave</option>
         <option value="#fff7cc">Amarillo suave</option>
       </select>
-      <button id="agregar-tarea">Agregar tarea</button>
+      <button type="submit" id="agregar-tarea">Agregar tarea</button>
     </form>
 
-    <ul id="lista-tareas"></ul>
+    <ul id="lista-tareas" class="grid"></ul>
   </main>
 
   <script src="main.js"></script>
